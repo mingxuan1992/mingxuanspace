@@ -1,4 +1,4 @@
-var mongoURL = "mongodb://mingxuanhan:liumiaomiao@localhost:27017/mytime";
+var mongoURL = "mongodb://mingxuanhan:liumiaomiao@128.199.200.212:27017/mytime";
 var mongo = require("./mongo");
 var ObjectId = require('mongodb').ObjectId;
 
