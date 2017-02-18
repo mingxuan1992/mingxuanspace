@@ -29,6 +29,12 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 var mapping= require('./routes/mapping'); 
 app.get('/aboutme',mapping.aboutmepage);
+app.get('/houtaibackend',mapping.houtaibackend);
+app.get('/availableTimeForNimble',mapping.showtimepage);
+
+var houtai= require('./routes/houtai'); 
+app.post('/addonetime',houtai.addonetime);
+app.post('/getalltime',houtai.getalltime);
 
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -1,0 +1,107 @@
+<html>
+<head>
+
+
+
+
+
+</head>
+<style>
+input {
+	width: 500px;
+}
+</style>
+<body>
+
+	<select id="selectforweekday">
+		<option value="Monday">Monday</option>
+		<option value="Tuesday">Tuesday</option>
+		<option value="Wednesday">Wednesday</option>
+		<option value="Thursday">Thursday</option>
+		<option value="Friday">Friday</option>
+		<option value="Saturday">Saturday</option>
+		<option value="Sunday">Sunday</option>
+	</select>
+
+	<select id="selectformonth">
+		<option value="Jan">Jan</option>
+		<option value="Feb">Feb</option>
+		<option value="Mar">Mar</option>
+		<option value="Apr">Apr</option>
+		<option value="May">May</option>
+		<option value="Jun">Jun</option>
+		<option value="Jul">Jul</option>
+		<option value="Aug">Aug</option>
+		<option value="Sep">Sep</option>
+		<option value="Oct">Oct</option>
+		<option value="Nov">Nov</option>
+		<option value="Dec">Dec</option>
+	</select>
+
+	<select id="selectforday">
+	</select>
+	<select id="selectforavailable">
+		<option value="false">false</option>
+		<option value="true">true</option>
+	</select>
+	<select id="selectforstarttime">
+
+	</select>
+	<select id="selectforendtime">
+
+	</select>
+	<button id="submit">submit</button>
+	<br>
+	<input id="description">
+</body>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	var HtmlContext = "";
+	for (i = 1; i < 32; i++) {
+		HtmlContext = HtmlContext
+				+ " <option value='";
+	HtmlContext=HtmlContext+i;
+	HtmlContext=HtmlContext+"'>";
+		HtmlContext = HtmlContext + i;
+		"</option>";
+	}
+	document.getElementById('selectforday').innerHTML = HtmlContext;
+
+	var startHtmlContext = "";
+	for (i = 9; i < 22; i++) {
+		startHtmlContext = startHtmlContext
+				+ " <option value='";
+		startHtmlContext = startHtmlContext+i;
+		startHtmlContext =startHtmlContext+"'>";
+		startHtmlContext = startHtmlContext + i;
+		"</option>";
+	}
+	document.getElementById('selectforstarttime').innerHTML = startHtmlContext;
+
+	var endHtmlContext = "";
+	for (i = 9; i < 22; i++) {
+		endHtmlContext = endHtmlContext
+				+ " <option value='";
+	endHtmlContext=endHtmlContext+i;
+	endHtmlContext=endHtmlContext+"'>";
+		endHtmlContext = endHtmlContext + i;
+		"</option>";
+	}
+	document.getElementById('selectforendtime').innerHTML = endHtmlContext;
+	
+	document.getElementById('submit').addEventListener('click',function(){
+		$.post('/addonetime',{
+			weekday:document.getElementById('selectforweekday').value,
+			month:document.getElementById('selectformonth').value,
+			day:document.getElementById('selectforday').value,
+			available:document.getElementById('selectforavailable').value,
+			starttime:document.getElementById('selectforstarttime').value,
+			endtime:document.getElementById('selectforendtime').value,
+			description:document.getElementById('description').value
+		},function(res){
+			alert(res.status);	
+		})
+		
+	})
+</script>
+</html>
