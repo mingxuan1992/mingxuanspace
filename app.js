@@ -30,7 +30,7 @@ app.get('/', routes.index);
 var mapping= require('./routes/mapping'); 
 app.get('/aboutme',mapping.aboutmepage);
 app.get('/houtaibackend',mapping.houtaibackend);
-app.get('/availableTimeForNimble',mapping.showtimepage);
+app.get('/availabletime',mapping.showtimepage);
 
 var houtai= require('./routes/houtai'); 
 app.post('/addonetime',houtai.addonetime);
